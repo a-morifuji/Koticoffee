@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="糸島の古民家をリノベーションしたカフェ、Koti coffee。こだわりのコーヒーと心安らぐ空間で、ゆったりとしたひとときをお過ごしください。">
+    <title>Koti coffee | 北欧スタイルの古民家カフェ</title>
+
+    <!-- ファビコン -->
+    <link rel="icon" href="./img/common/kamome.svg">
+
+    <!-- reset.cssのCDN -->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+
+    <!-- SlickのCSS用のCDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Googleフォント -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,500&family=Noto+Sans+JP&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="loadingBox">
+        <div class="liquid-loader">
+          <div class="liquid-wave"></div>
+        </div>
+    </div>
+
+    <!-- ヘッダー -->
+    <header>
+        <div class="wrapper">
+            <h1>
+                <!-- ロゴの画像 -->
+                <a href="./index.html">
+                    <img src="./img/common/name.svg" alt="Koticoffeeの画像">
+                </a>
+            </h1>
+
+            <!-- ナビゲーション -->
+            <div id="hamMenu">
+                <button class="hamBtn">
+                    <span></span>
+                </button>
+
+                <nav class="hamCont">
+                    <ul>
+                        <li><a href="#">ABOUT</a></li>
+                        <li><a href="#">MENU</a></li>
+                        <li><a href="#">ACCESS</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- メインビジュアル -->
+        <div id = "mv">
+            <!-- MV SP版画像 -->
+            <div class="wrapper mvImgBoxSp">
+                <!-- SP版ロゴ -->
+                 <div class="mvLogoSp">
+                    <img src="img/common/logo_02.svg" alt="ロゴの画像">
+                </div>
+
+                <!-- MV SP版画像 -->
+                <div id="mainVisualSp">
+                    <img class="active" src="./img/mv/sp/kominkaFvSp.webp" alt="メインビジュアルの画像">
+                    <img src="./img/mv/sp/dripFvSp.webp" alt="メインビジュアルの画像2">
+                    <img src="./img/mv/sp/kominkaFriendsFvSp.webp" alt="メインビジュアルの画像3">
+                </div>
+            </div>
+
+            <div class="wrapper mvBox">
+                <!-- MV PC版画像 -->
+                <div id="mainVisual" class="mvImgBox">
+                    <img class="active" src="./img/mv/pc/kominkaFv.webp" alt="メインビジュアルの画像">
+                    <img src="./img/mv/pc/dripFv.webp" alt="メインビジュアルの画像2">
+                    <img src="./img/mv/pc/kominkaFv2.webp" alt="メインビジュアルの画像3">
+                </div>
+
+                <!-- PC版ロゴ -->
+                <img class="mvLogo" src="./img/common/logo_02.svg" alt="ロゴの画像">
+                
+                <!-- キャッチコピー -->
+                <div class="mvCp scrollTgtSp">
+                    <h2>あなたと、<br>一息つきたい。</h2>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ABOUT -->
+        <section id="about">
+            <div class="wrapper">
+                <div class="aboutBox">
+                    <div class="aboutCnt">
+                        <h3 class="scrollTgt">ABOUT</h3>
+
+                        <p class="scrollTgt aboutText">
+                            昔ながらの古民家に、北欧の心地よさを。<br>
+                            古民家ならではの温もりや趣を残しながら、<br>
+                            北欧のシンプルで穏やかな空間へとリノベーションしました。<br>
+                            木のぬくもりに包まれながら、コーヒーを片手にゆっくりと流れる時間をお楽しみください。<br>
+                            日々の暮らしの中で、ふっと肩の力を抜けるような場所を目指しています。
+                        </p>
+                    </div>
+
+                    <img class="scrollTgt aboutImg" src="./img/about/coffeeDrip.webp" alt="コーヒーを淹れている画像">
+
+                    <!-- もっと見るボタン -->
+                    <button class="viewMoreBtn cursor buttonFade">View more</button>
+                </div>
+            </div>
+        </section>
+    
+        <!-- かもめアニメーション、波線 -->
+        <div class="wavy kamomeCnt">
+            <img src="./img/common/kamome.svg" alt="鴎の画像" class="kamomeImg">
+            <img src="./img/common/wavyLine.webp" alt="波線の画像" class="wave">
+        </div>
+
+        <div class="wavySp kamomeCnt">
+            <img src="./img/common/kamome.svg" alt="鴎の画像" class="kamomeImg">
+            <img src="./img/common/sp/wavySp.webp" alt="波線の画像"  class="wave">
+        </div>
+        
+        <!-- MENU -->
+        <section id="menu">
+            <div class="wrapper menuStickyArea">
+                
+                <h3 class="menuTitle">MENU</h3>
+                
+                <!-- メニューの写真 -->
+                <div class="menuGrid">
+                    <div class="item menuBoxBig scrollTgt">
+                        <div class="textMask cursor">
+                            <h4>Coffee</h4>
+                            <p>ほっとひと息、心ほどける一杯</p>
+                        </div>
+                    </div>
+                    <div class="item menuBoxMain1 scrollTgt">
+                        <div class="textMask cursor">
+                            <h4>Cinnamonroll</h4>
+                            <p>シナモン香る焼きたての幸せ</p>
+                        </div>
+                    </div>
+                    <div class="item menuBoxMain2 scrollTgt">
+                        <div class="textMask cursor">
+                            <h4>Late</h4>
+                            <p>ミルクのやさしさに包まれて</p>
+                        </div>
+                    </div>
+                    <div class="item menuBoxSub1 scrollTgt">
+                        <div class="textMask cursor">
+                            <h4>Opensand</h4>
+                            <p>素材のおいしさをひと皿に</p>
+                        </div>
+                    </div>
+                    <div class="item menuBoxSub2 scrollTgt">
+                        <div class="textMask cursor">
+                            <h4>Soup & Bread</h4>
+                            <p>からだにうれしい、あたたかな一皿</p>
+                        </div>
+                    </div>
+                    <div class="item menuBoxSub3 scrollTgt">
+                        <div class="textMask cursor">
+                            <h4>Cake</h4>
+                            <p>甘いひとときをゆっくりと</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- もっと見るボタン -->
+                <button class="viewMoreBtn cursor buttonFade">View more</button>
+            </div>
+        </section>
+
+        <!-- かもめアニメーション、波線 -->
+        <div class="wavy kamomeCnt">
+            <img src="./img/common/kamome.svg" alt="鴎の画像" class="kamomeImg">
+            <img src="./img/common/wavyLine.webp" alt="波線の画像" class="wave">
+        </div>
+
+        <div class="wavySp kamomeCnt">
+            <img src="./img/common/kamome.svg" alt="鴎の画像" class="kamomeImg">
+            <img src="./img/common/sp/wavySp.webp" alt="波線の画像"  class="wave">
+        </div>
+        
+        <!-- ACCESS -->
+        <section id="access">
+            <div class="wrapper">
+                <h3 class="scrollTgt">ACCESS</h3>
+                <div class="accessBox">
+                    <!-- 店舗情報 -->
+                    <div class="accessInfo">
+                        <dl>
+                            <div class="accessList scrollTgt">
+                                <dt>店舗名</dt>
+                                <dd>Koti coffee</dd>
+                            </div>
+                            <div class="accessList scrollTgt">
+                                <dt>住所</dt>
+                                <dd>福岡糸島市X丁目XX XX </dd>
+                            </div>
+                        
+                            <div class="accessList scrollTgt">
+                                <dt>TEL</dt>
+                                <dd>XXX-XXXX-XXXX</dd>
+                            </div>
+                            <div class="accessList scrollTgt">
+                                <dt>営業時間</dt>
+                                <dd>10:00〜18:00</dd>
+                            </div>
+                        </dl>
+                        <!-- インスタグラムのボタン -->
+                        <button id="instBtn" class="cursor buttonFade">
+                            <img src="./img/common/instIcon.webp" class="instIcon" alt="インスタグラムのボタン">
+                            <img src="./img/common/inst_White.svg" class="instIconHover" alt="インスタグラムのボタン_ホバー">
+                            Instagram
+                        </button>
+                    </div>
+                    <!-- 地図 -->
+                    <iframe class="scrollTgt" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3227.1899372052876!2d130.19874352556357!3d33.64014219426965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1z57O45bO25biCIOOCq-ODleOCpw!5e0!3m2!1sja!2sjp!4v1791178775424!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <div class="wrapper footerImg">
+            <img src="./img/footer/kominka.webp" alt="古民家の外観画像">
+        </div>
+    </main>
+
+    <!-- フッター -->
+    <footer>
+        <small>&copy;Koti coffee</small>
+    </footer>
+
+      <!-- JQuery用のCDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    
+    <!-- SlickのJS用のCDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="./js/script.js"></script>
+</body>
+</html>

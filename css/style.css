@@ -1,0 +1,1057 @@
+@charset "UTF-8";
+
+/* 共通 */
+/* どんなサイトにも基本共通で入れるCSS */
+html {
+    /* 1rem = 16px 文字のサイズを可変する */
+    font-size: 100%;
+}
+
+body {
+    font-family: "Noto Sans JP", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #333;
+    /* line-height: 1.7; 行間 */
+    background-color: #F7F5EF;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none; /* 下線なし */
+    display: inline-block; /* インライン要素 width, heightの指定不可→指定可能にする */
+    color: #333;
+}
+
+li {
+    list-style-type: none; /* リストの「・」なし */
+}
+
+.wrapper {
+    max-width: 1250px;
+    width: 90%;
+    margin: auto;
+}
+
+
+
+
+
+/* ローディングアニメーション */
+.loadingBox {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F7F5EF;
+    z-index: 999999;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease;
+}
+
+.liquid-loader {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* 読み込み前はページ本体を非表示 */
+body:not(.loaded) header,
+body:not(.loaded) main,
+body:not(.loaded) footer {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* 読み込み完了後はページ本体を表示 */
+body.loaded header,
+body.loaded main,
+body.loaded footer {
+    opacity: 1;
+    visibility: visible;
+}
+
+@keyframes wave-fill {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.05);
+  }
+}
+
+@keyframes wave-move {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* 液体の波 */
+.liquid-wave {
+    position: absolute;
+    bottom: -150%;
+    left: -25%;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 255, 255, 0.9),
+        rgba(255, 255, 255, 0.7)
+    );
+    border-radius: 45%;
+    animation:
+        wave-fill 3s ease-in-out infinite,
+        wave-move 4s linear infinite;
+}
+
+.liquid-wave::before {
+    content: "";
+    position: absolute;
+    top: -28%;
+    left: -25%;
+    width: 170%;
+    height: 170%;
+    background: radial-gradient(
+        circle at center,
+        rgba(60, 216, 255, 0.454),
+        rgba(255, 255, 255, 0.5)
+    );
+    border-radius: 47%;
+    animation:
+        wave-fill 8s ease-in-out infinite reverse,
+        wave-move 12s linear infinite;
+}
+
+.liquid-wave::after {
+    content: "";
+    position: absolute;
+    top: -30%;
+    left: -35%;
+    width: 170%;
+    height: 170%;
+    background: radial-gradient(
+        circle at center,
+        rgba(36, 113, 255, 0.6),
+        rgba(255, 255, 255, 0.3)
+    );
+    border-radius: 48%;
+    animation:
+        wave-fill 15s ease-in-out infinite,
+        wave-move 16s linear infinite;
+}
+
+
+
+
+/* 文字の行間 */
+h3,
+.hamCont ul,
+p,
+button,
+dl,
+small {
+  letter-spacing: 0.05em;
+}
+
+h2,
+h4 {
+   letter-spacing: 0.07em; 
+}
+
+
+
+/* フェードイン */
+#mainVisual img {
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out; 
+}
+
+#mainVisual img.active {
+    opacity: 1;
+  }
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* スクロール時のフェードイン */
+.scrollTgt {
+    opacity: 0;
+    translate: 0 50px;
+    transition: opacity 0.8s ease, translate 0.8s ease;
+}
+
+.scrollTgt.fadeIn {
+    opacity: 1;
+    translate: 0 0;
+}
+
+/* ボタンのフェードイン */
+.buttonFade {
+    opacity: 0;
+    translate: 0 30px;
+    transition: opacity 0.4s ease, translate 0.4s ease;
+}
+
+.buttonFade.fadeIn {
+    opacity: 1;
+    translate: 0 0;
+}
+
+
+
+/* かもめ */
+.kamomeCnt {
+    position: relative;
+}
+
+.kamomeImg {
+    width: 20px;
+    animation: 
+    moveToLeft 28s linear infinite,
+    fluffy 3s ease-in-out infinite alternate;
+    position: absolute;
+    width: clamp(20px, 2vw, 32px); /* 画面幅に応じてサイズ調整 */
+    height: auto;
+}
+
+/* キーフレーム1：右から左へ移動 */
+@keyframes moveToLeft {
+  0% {
+    left: 100%; /* 画面の右外からスタート */
+  }
+  100% {
+    left: -100px; /* 画像の幅分だけ左外へ抜ける（画像サイズに合わせて調整） */
+  }
+}
+
+/* キーフレーム2：上下にふわふわ揺れる */
+@keyframes fluffy {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-30px); /* 上に動く */
+  }
+}
+
+
+
+/* 波線 */
+.wave {
+    display: block;
+}
+
+.wavySp {
+    display: none;
+}
+
+
+
+/* ボタン本体 */
+.viewMoreBtn,
+#instBtn {
+    margin-top: 50px;
+    --btn-color: #E58A4E;
+    position: relative;
+    display: inline-block;
+    min-width: min(200px, 100%);
+    padding: .7em 3em .7em 2em;
+    border-radius: 9999px;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--btn-color);
+    border: 2px solid var(--btn-color);
+    background: none;
+
+    /* 表示アニメーションとホバーの変化を両方設定 */
+    transition:
+        opacity .5s ease,
+        translate .5s ease,
+        background-color .3s ease,
+        color .3s ease;
+}
+
+.viewMoreBtn::after,
+#instBtn::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 1.2em;
+    width: 1em;
+    height: .4em;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: translateY(-50%) skewX(45deg);
+    transition: transform .3s ease;
+}
+
+.viewMoreBtn:hover::after,
+#instBtn:hover::after {
+    transform: translateY(-50%) skewX(45deg) translateX(4px);
+}
+
+/* ボタンのホバー */
+.viewMoreBtn:hover,
+#instBtn:hover {
+    background-color: #E58A4E;
+    color: #fff;
+    
+}
+
+.cursor {
+    cursor: url("../img/common/kamome.svg"), pointer;
+    width: 14px;
+}
+
+/* インスタグラムのアイコン */
+.instIcon {
+    display: block;
+}
+
+.instIconHover {
+    display: none;
+}
+
+/* ボタンホバー時のアイコン */
+#instBtn:hover .instIcon {
+    display: none;
+}
+
+#instBtn:hover .instIconHover {
+    display: block;
+}
+
+
+
+
+
+
+/* ヘッダー */
+header {
+    background-color: #DEDAD1;
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    z-index: 99999;
+    top: 0;
+    left: 0;
+    opacity: 1;
+}
+
+header ul {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    display: flex;
+    gap: 40px;
+}
+
+/* 店名 */
+h1 img {
+    width: 180px;
+}
+
+header div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ナビゲーション */
+.hamCont a {
+    /* 要素や文字、背景などを透明にする */
+    color: transparent;
+    /* オレンジと黒が50%の位置で切り替わるグラデーション */
+    background: linear-gradient(to right, #5B7C8D 50%, #333 50%) 100%;
+    /* 背景をテキストで切り抜く */
+    background-clip: text;
+    /* 横幅は200%にしてグラデーションの青部分は見えないようにする */
+    background-size: 200% 100%;
+    transition: background-position 0.35s;
+}
+
+.hamCont a:hover {
+    background-position: 0 100%;
+}
+
+
+
+
+
+/* MV */
+#mv {
+    position: relative;
+    margin-top: 120px;
+}
+
+/* 見出し */
+h3 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    color: #5B7C8D;
+    font-size: 2rem;
+}
+
+.mvBox {
+    position: relative;
+}
+
+.mvImgBoxSp {
+    display: none;
+}
+
+/* MV 画像 */
+#mainVisual {
+    width: 82%;
+    max-width: 1100px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+h2 {
+    color: #5B7C8D;
+    font-size: 1.8rem;
+}
+
+/* キャッチコピー */
+.mvCp {
+    position: absolute;
+    top : 83%;
+    left: 12%;
+    z-index: 2;
+    font-size: clamp(0.8889rem, 0.6327rem + 1.2298vw, 1.2rem);
+}
+
+/* ロゴ */
+.mvLogo {
+    position: absolute;
+    top: 3%;
+    right: 12%;
+    width: clamp(0.8rem, 1.1273rem + 2.589vw, 3.8889rem);
+    z-index: 2;
+}
+
+
+
+
+
+
+/* ABOUT */
+#about {
+    margin-top: 280px;
+}
+
+#about p {
+    margin-top: 50px;
+    line-height: 2;
+}
+
+/* PC版 */
+.aboutBox {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10%;
+    align-items: center;
+}
+
+.aboutCnt {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+}
+
+.aboutBox .aboutImg {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    filter: drop-shadow(5px 5px 10px rgba(110, 152, 173, 0.2));
+}
+
+.aboutBox > .viewMoreBtn {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: start;
+    align-self: start;
+    margin-top: 30px;
+}
+
+.brSp {
+    display: none;
+}
+
+
+
+
+
+/* MENU */
+#menu {
+    margin-top: 140px;
+}
+
+.wavy {
+    margin-top: 140px;
+}
+
+.menuTitle {
+    margin-bottom: 30px;
+}
+
+/* メニューグリッド */
+.menuGrid {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 横 */
+    grid-template-rows: auto; 
+    gap: 50px;
+}
+
+.item {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    background-repeat: no-repeat;
+}
+
+/* メニューの画像 */
+/* 1列目の画像 */
+.menuBoxBig {
+    grid-column: 1/7;
+    grid-row: 1/2;
+    background-image: url(../img/menu/pc/coffeeBreak.webp);
+    aspect-ratio: 2.5 / 1;
+    border-radius: 45% 30% 50% 40% / 45% 35% 65% 55%;
+    filter: drop-shadow(5px 5px 10px rgba(110, 152, 173, 0.2));
+}
+
+/* 2列目の画像 */
+.menuBoxMain1 {
+    grid-column: 1/4;
+    grid-row: 2/2;
+    background-image: url(../img/menu/pc/cinnamon.webp);
+    aspect-ratio: 1 / 1;
+    border-radius: 30px;
+    filter: drop-shadow(5px 5px 10px rgba(110, 152, 173, 0.2));
+}
+
+.menuBoxMain2 {
+    grid-column: 4/7;
+    grid-row: 2/3;
+    background-image: url(../img/menu/pc/matcha.webp);
+    aspect-ratio: 1 / 1;
+    border-radius: 30px;
+    filter: drop-shadow(5px 5px 10px rgba(110, 152, 173, 0.2));
+}
+
+/* 3列目の画像 */
+.menuBoxSub1 {
+    grid-column: 1/3;
+    grid-row: 3/4;
+    background-image: url(../img/menu/pc/opensand.webp);
+    aspect-ratio: 2 / 3;
+    border-radius: 50% 50% 8px 8px / 30% 30% 8px 8px;
+    filter: drop-shadow(5px 5px 10px rgba(110, 152, 173, 0.2));
+}
+  
+.menuBoxSub2 {
+    grid-column: 3/5;
+    grid-row: 3/4;
+    background-image: url(../img/menu/pc/soupbread.webp);
+    aspect-ratio: 2 / 3;
+    border-radius: 50% 50% 8px 8px / 30% 30% 8px 8px;
+    filter: drop-shadow(5px 5px 10px rgba(110, 152, 173, 0.2));
+}
+  
+.menuBoxSub3 {
+    grid-column: 5/7;
+    grid-row: 3/4;
+    background-image: url(../img/menu/pc/chococake.webp);
+    aspect-ratio: 2 / 3;
+    border-radius: 50% 50% 8px 8px / 30% 30% 8px 8px;
+    filter: drop-shadow(5px 5px 10px rgba(110, 152, 173, 0.2));
+}
+
+/* 画像ホバー */
+/* 見出しと説明文の親要素 */
+.textMask {
+  display: flex;
+  flex-direction: column;
+}
+
+/* メニュー名 */
+.textMask h4 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    border: 1px solid #fff;
+    border-radius: 9999px;
+    padding: 12px 24px;
+}
+
+.textMask p {
+    margin-top: 20px;
+}
+
+/* 画像ホバー時のマスク */
+.textMask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(110, 152, 173, 0.5); /* 半透明のマスク */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  opacity: 0; /* 最初は透明 */
+  transition: opacity 0.3s ease; /* ふわっと表示させるアニメーション */
+}
+
+/* 画像ホバー時にマスク表示 */
+.item:hover .textMask {
+  opacity: 1;
+}
+
+
+
+
+
+
+/* ACCESS */
+#access h3 {
+    margin-top: 140px;
+}
+
+/* 住所 */
+#access dl {
+    margin-top: 50px;
+}
+
+.accessList {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.accessList dt {
+    float: left;
+    flex: 0 0 70px;
+    margin: 0;
+}
+
+.accessList dd {
+    flex: 1;
+    margin: 0;
+    margin-left: 60px;
+}
+
+.accessList dt,
+.accessList dd {
+    white-space: nowrap;
+}
+
+.accessBox {
+    display: flex;
+    gap: 29%;
+    flex: 1;
+    min-width: 0;
+}
+
+.accessInfo {
+    flex: 1;
+    min-width: 0;
+}
+
+/* 地図 */
+iframe {
+    width: 45%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+
+/* インスタグラムの画像 */
+#instBtn img {
+    width: 30px;
+}
+
+/* インスタグラムのテキスト */
+#instBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+
+
+
+
+/* フッター */
+/* フッター画像 */
+.footerImg {
+    margin-top: 280px;
+}
+
+footer {
+    background-color: #DEDAD1;
+    text-align: center;
+}
+
+small {
+    display: inline-block;
+    font-size: .75rem;
+    margin: 15px;
+}
+
+
+
+
+
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    /* ヘッダー */
+    .mvLogo {
+        display: none;
+    }
+
+    header img {
+        width: 50%;
+    }
+
+    /* ロゴを前面に表示 */
+    header h1 {
+        position: relative;
+        z-index: 10002;
+    }
+
+    /* ハンバーガーメニュー */
+    .hamBtn {
+        position: fixed; /* ヘッダー固定 スクロールしても追従する */
+        right: 24px; /* 右側 */
+        top: 24px; /* 上側 */
+        z-index: 10000; /* ハンバーガーメニューの中身のレイヤーより上に表示させる */
+
+        width: 40px;
+        height: 40px;
+        border-radius: 4px;
+
+        /* 水平方向、垂直方向 中央寄せ */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hamBtn span {
+        display: inline-block; /* インライン要素 width, heightの指定不可→指定可能にする */
+        width: 24px; /* 長方形の長さ */
+        height: 3px; /* 長方形の太さ */
+        background-color: #5B7C8D;
+        border-radius: 4px;
+        position: relative; /* 動かす対象の基準 */
+        transition: all .8s;
+    }
+
+    .hamBtn span::before,
+    .hamBtn span::after {
+        content: ""; /* 擬似要素では必須 */
+        display: inline-block; /* インライン要素 width, heightの指定不可→指定可能にする */
+        width: 24px; /* 長方形の長さ */
+        height: 3px; /* 長方形の太さ */
+        background-color: #5B7C8D;
+        border-radius: 4px;
+        position: absolute; /* 動かす対象 */
+        transition: all .3s; /* 動きが早いとスタイリッシュ、遅いと柔らかい印象 */
+    }
+
+    .hamBtn span::before {
+        left: 0;
+        top: -7px; /* 線の太さ*2の余白  */
+    }
+
+    .hamBtn span::after {
+        left: 0;
+        top: 7px; /* 線の太さ*2の余白  */
+    }
+
+
+
+    /* ハンバーガーメニュー ボタン 開いている時 */
+    .open .hamBtn span {
+        background-color: transparent; /* 色を透明にする */
+    }
+
+    .open .hamBtn span::before {
+        top: 0;
+        rotate: 45deg; /* 回転 */
+    }
+
+    .open .hamBtn span::after {
+        top: 0;
+        rotate: -45deg; /* 回転 */
+    }
+
+
+
+    /* ハンバーガーメニュー 中身 閉じている時 */
+    .hamCont {
+        width: 100%;
+        height: 105vh; /* 1スクロール分の高さ */
+        position: fixed;
+        top: 0;
+        right: 0;
+
+        /* 水平方向、垂直方向 中央寄せ */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        /* 文字 中央寄せ */
+        text-align: center;
+
+        transition: all .5s;
+        translate: 120% 0;
+        z-index: 9998;
+    }
+
+    .hamCont ul {
+        font-size: 2rem;
+        font-weight: 500;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hamCont a {
+        color: #5B7C8D;
+        width: 100%;
+        padding: 0 1em;
+        margin: .25em 0;
+    }
+
+
+
+    /* ハンバーガーメニュー 中身 開いている時 */
+    .open .hamCont {
+        background-color: rgba(255, 255, 255, 0.8);
+        translate: 0 0;
+    }
+
+
+
+
+    /* 波線 */
+    .wavy {
+        display: none;
+    }
+
+    .wavySp {
+        display: inline-block;
+        margin-top: 160px;
+    }
+
+
+
+
+
+    /* MV */
+    /* SP版 */
+    .mvImgBoxSp {
+        display: block;
+        width: 90%;
+        margin: 80px auto 0;
+        text-align: center;
+    }
+
+    /* ロゴ */
+    .mvLogoSp {
+        margin: 0 auto;
+        text-align: center;
+        padding: 30px;
+        display: block;
+        width: 45%;
+        height: auto;
+    }
+
+    .mvLogoSp img {
+        display: block;
+        width: 100px;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    /* スライドショー */
+    #mainVisualSp {
+        width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    #mainVisualSp img {
+        border-radius: 40% 40% 8px 8px / 20% 20% 8px 8px;
+    }
+    
+    /* キャッチコピー */
+    .mvCp {
+        position: static;
+        margin: 24px auto 0;
+        padding: 0;
+        text-align: center;
+        font-size: 1.4rem;
+        line-height: 1.7;
+    }
+
+    /* PC版MVを非表示 */
+    .mvImgBox {
+        display: none;
+    }   
+
+
+
+
+    
+    /* ABOUT */
+    #about {
+        margin-top: 280px;
+    }
+
+    .aboutBox {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .aboutCnt {
+        width: 100%;
+    }
+
+    .aboutBox .aboutImg {
+        width: 90%;
+        max-width: 360px;
+        height: auto;
+        align-self: center;
+        margin-top: 40px;
+    }
+
+    .aboutBox > .viewMoreBtn {
+        align-self: flex-start;
+        margin-top: 30px;
+    }
+
+    /* SP版だけ改行 */
+    .brSp {
+        display: block;
+    }
+
+
+
+
+
+    /* MENU */
+    .menuStickyArea {
+        position: relative;
+    }
+    
+    /* メニュー全体 */
+    .menuGrid {
+        display: block;
+        margin-top: 0;
+    }
+    
+    /* MENU見出し */
+    .menuTitle {
+        position: sticky;
+        top: 150px;
+        z-index: 20;
+        margin-bottom: 30px;
+        background-color: #F7F5EF;
+    }
+    
+    /* メニュー画像 */
+    .menuGrid .item {
+        position: sticky;
+        top: 220px;
+        margin-top: 60px;
+    }
+    
+    /* 1枚目の画像 */
+    .menuBoxBig {
+        background-image: url(../img/menu/sp/coffeeBreak.webp);
+        aspect-ratio: 1 / 1;
+        border-radius: 50px;
+    }
+    
+    /* 2枚目以降の画像 */
+    .menuBoxMain1,
+    .menuBoxMain2,
+    .menuBoxSub1,
+    .menuBoxSub2,
+    .menuBoxSub3 {
+        aspect-ratio: 1 / 1;
+        border-radius: 50px;
+    }
+    
+    /* View moreボタン */
+    #menu .viewMoreBtn {
+        position: relative;
+        z-index: 2;
+        margin-top: 50px;
+    }
+
+    .menuTitle.menuTitleEnd {
+        position: absolute;
+        top: auto;
+        margin-top: 0;
+    }
+
+
+    /* ACCESS */
+    .accessBox {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* 地図 */
+    iframe {
+        margin-top: 50px;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+    }
+
+
+
+
+    /* フッター */
+    .footerImg img {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+    }
+}
